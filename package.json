@@ -1,0 +1,35 @@
+{
+  "name": "@sudoo/search",
+  "version": "1.0.0",
+  "description": ":notes: Search Utils",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SudoDotDog/Sudoo-Search.git"
+  },
+  "author": "WMXPY",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SudoDotDog/Sudoo-Search/issues"
+  },
+  "homepage": "https://github.com/SudoDotDog/Sudoo-Search#readme",
+  "devDependencies": {
+    "@sudoo/io": "^1.8.0",
+    "@sudoo/mock": "^1.5.0",
+    "@sudoo/triforce": "^2.9.4"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "instrument": true,
+    "reporter": [
+      "json",
+      "text-summary"
+    ],
+    "report-dir": "coverage",
+    "sourceMap": true
+  }
+}
