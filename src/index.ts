@@ -4,4 +4,6 @@
  * @description Index
  */
 
-export * from "./trie-tree";
+export * from "./trie/node";
+export * from "./trie/trie";
+
