@@ -1,5 +1,5 @@
 /**
- * @author Xiaoluluxian
+ * @author Xiaoluluxian & WMXPY
  * @namespace Search_Trie
  * @description Trie
  */
@@ -9,11 +9,16 @@ import { TrieNode } from "./node";
 
 export class TrieTree {
 
+    public static create(): TrieTree {
+
+        return new TrieTree();
+    }
+
     private readonly root: TrieNode;
 
-    public constructor() {
+    private constructor() {
 
-        this.root = new TrieNode();
+        this.root = TrieNode.create();
     }
 
     public get rootNode(): TrieNode {
@@ -86,7 +91,8 @@ export class TrieTree {
 
         const nextNode: TrieNode | undefined = current.children.get(word.charAt(index));
         if (!nextNode) {
-            const created: TrieNode = new TrieNode();
+
+            const created: TrieNode = TrieNode.create();
             current.children.set(word.charAt(index), created);
             this._insertHelper(word, index + 1, created);
         } else {

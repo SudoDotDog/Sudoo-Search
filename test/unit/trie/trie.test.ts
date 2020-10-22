@@ -15,7 +15,7 @@ describe('Given {TrieTree} Class', (): void => {
 
     it('Should be able to init', (): void => {
 
-        const tree = new TrieTree();
+        const tree: TrieTree = TrieTree.create();
 
         expect(tree.rootNode).to.be.not.equal(null);
         expect(tree.rootNode.isTarget).to.be.equal(false);
@@ -24,9 +24,9 @@ describe('Given {TrieTree} Class', (): void => {
 
     it('Should be able to insert and search value', (): void => {
 
-        const tree = new TrieTree();
-        const value1 = chance.string();
-        const value2 = chance.string();
+        const tree: TrieTree = TrieTree.create();
+        const value1: string = chance.string();
+        const value2: string = chance.string();
 
         tree.insert(value1);
         tree.insert(value2);
@@ -37,7 +37,7 @@ describe('Given {TrieTree} Class', (): void => {
 
     it('Should be able to search prefix', (): void => {
 
-        const tree = new TrieTree();
+        const tree: TrieTree = TrieTree.create();
         const value1: string = chance.string({ length: 10 });
         const value2: string = chance.string({ length: 10 });
 
