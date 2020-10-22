@@ -13,6 +13,10 @@ export class TrieTree {
     public constructor() {
         this.root = new TrieNode();
     }
+
+    public get rootNode(): TrieNode {
+        return this.root;
+    }
     public insert(word: string): void {
         if (word.length === 0) {
             return;
@@ -43,7 +47,7 @@ export class TrieTree {
             if (value.isTarget) {
                 result.push(prefix + key);
             }
-            this.getAllPrefixWithHelper(current.children.get(key), result, prefix + key);
+            this.getAllPrefixWithHelper(value, result, prefix + key);
         }
     }
 
@@ -51,10 +55,11 @@ export class TrieTree {
         if (index === prefix.length) {
             return current;
         }
-        if (!current.children.get(prefix.charAt(index))) {
+        const nextNode: TrieNode | undefined = current.children.get(prefix.charAt(index));
+        if (!nextNode) {
             return null;
         } else {
-            return this.reachPrefixNode(current.children.get(prefix.charAt(index)), prefix, index + 1);
+            return this.reachPrefixNode(nextNode, prefix, index + 1);
         }
     }
     private insertHelper(word: string, index: number, current: TrieNode): void {
@@ -62,12 +67,13 @@ export class TrieTree {
             current.isTarget = true;
             return;
         }
-        if (!current.children.get(word.charAt(index))) {
+        const nextNode: TrieNode | undefined = current.children.get(word.charAt(index));
+        if (!nextNode) {
             const created: TrieNode = new TrieNode();
             current.children.set(word.charAt(index), created);
             this.insertHelper(word, index + 1, created);
         } else {
-            this.insertHelper(word, index + 1, current.children.get(word.charAt(index)));
+            this.insertHelper(word, index + 1, nextNode);
         }
     }
 
@@ -75,10 +81,11 @@ export class TrieTree {
         if (index >= word.length) {
             return current.isTarget ? word : null;
         }
-        if (!current.children.get(word.charAt(index))) {
+        const nextNode: TrieNode | undefined = current.children.get(word.charAt(index));
+        if (!nextNode) {
             return null;
         } else {
-            return this.searchHelper(word, index + 1, current.children.get(word.charAt(index)));
+            return this.searchHelper(word, index + 1, nextNode);
         }
     }
 }
