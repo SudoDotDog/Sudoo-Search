@@ -1,7 +1,7 @@
 {
   "name": "@sudoo/search",
   "version": "0.1.0",
-  "description": ":notes: Search Utils",
+  "description": "Search Utils",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SudoDotDog/Sudoo-Search.git"
